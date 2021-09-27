@@ -60,3 +60,11 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}-buster
           labels: ${{ steps.meta.outputs.labels }}
           build-args: IMAGE_PREFIX=python:3.8-buster
+
+      - name: Build and push Latest
+        uses: docker/build-push-action@v2.7.0
+        with:
+          context: .
+          push: true
+          tags: latest
+          labels: ${{ steps.meta.outputs.labels }}
