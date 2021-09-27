@@ -41,7 +41,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}-bullseye
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: IMAGE_PREFIX=3.8-bullseye
+          build-args: IMAGE_PREFIX=python:3.8-bullseye
 
       - name: Build and push Slim
         uses: docker/build-push-action@v2.7.0
@@ -50,7 +50,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}-slim
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: IMAGE_PREFIX=3.8-slim
+          build-args: IMAGE_PREFIX=python:3.8-slim
 
       - name: Build and push Buster
         uses: docker/build-push-action@v2.7.0
@@ -59,4 +59,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}-buster
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: IMAGE_PREFIX=3.8-buster
+          build-args: IMAGE_PREFIX=python:3.8-buster
