@@ -27,7 +27,7 @@ jobs:
             # minimal
             type=semver,pattern={{version}}
           flavor: |
-            latest=off
+            latest=false
 
       - name: Build and push Alpine
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
