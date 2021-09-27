@@ -25,7 +25,7 @@ jobs:
           images: giammbo/cfn-lint
           tags: |
             # minimal
-            type=semver,pattern={{version}}
+            type=semver,pattern={{raw}}
           flavor: |
             latest=false
 
