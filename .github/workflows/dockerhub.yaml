@@ -27,7 +27,7 @@ jobs:
             latest=false
 
       - name: Build and push Alpine
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
@@ -35,15 +35,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Alpine
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: akhilerm/tag-push-action@v1.0.0
         with:
-          context: .
-          push: true
-          tags: latest
-          labels: ${{ steps.meta.outputs.labels }}
+          src: docker.io/giammbo/cfn-lint:${{ steps.meta.outputs.tags }}-alpine
+          dst: |
+            docker.io/giammbo/cfn-lint:latest
 
       - name: Build and push Bullseye
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
@@ -52,7 +51,7 @@ jobs:
           build-args: IMAGE_PREFIX=3.8-bullseye
 
       - name: Build and push Slim
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
@@ -61,7 +60,7 @@ jobs:
           build-args: IMAGE_PREFIX=3.8-slim
 
       - name: Build and push Buster
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v2.7.0
         with:
           context: .
           push: true
