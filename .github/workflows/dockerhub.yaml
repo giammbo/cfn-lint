@@ -1,6 +1,8 @@
 name: Upload DockerHub Image
 
-on: push
+on:
+  release:
+    types: [published]
 
 jobs:
   push_to_registry:
@@ -19,48 +21,55 @@ jobs:
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        tags: |
-          # minimal
-          type=semver,pattern={{version}}
-        flavor: |
-          latest=off
         with:
           images: giammbo/cfn-lint
-      
+          tags: |
+            # minimal
+            type=semver,pattern={{version}}
+          flavor: |
+            latest=off
+
       - name: Build and push Alpine
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: 
-            - ${{ steps.meta.outputs.tags }}
-            - latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          working-directory: ./alpine
+          build-args: IMAGE_PREFIX=3.8-alpine
+
+      - name: Build and push Alpine
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: latest
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: IMAGE_PREFIX=3.8-alpine
+
       - name: Build and push Bullseye
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: 
-            - ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          working-directory: ./bullseye
+          build-args: IMAGE_PREFIX=3.8-bullseye
+
       - name: Build and push Slim
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: 
-            - ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          working-directory: ./slim
-      - name: Build and push Slim
+          build-args: IMAGE_PREFIX=3.8-slim
+
+      - name: Build and push Buster
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: 
-            - ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          working-directory: ./buster
+          build-args: IMAGE_PREFIX=3.8-buster
