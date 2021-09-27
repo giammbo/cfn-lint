@@ -1,6 +1,8 @@
 name: Upload DockerHub Image
 
-on: push
+on:
+  release:
+    types: [published]
 
 jobs:
   push_to_registry:
