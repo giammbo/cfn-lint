@@ -1,8 +1,6 @@
 name: Upload DockerHub Image
 
-on:
-  release:
-    types: [published]
+on: push
 
 jobs:
   push_to_registry:
@@ -25,7 +23,7 @@ jobs:
           images: giammbo/cfn-lint
           tags: |
             # minimal
-            type=semver,pattern={{raw}}
+            type=ref,event=tag
           flavor: |
             latest=false
 
