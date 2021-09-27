@@ -20,13 +20,13 @@ jobs:
       
       - name: Extract metadata (tags, labels) for latest and alpine version
         id: meta-latest
-        uses: docker/metadata-action@3.5.0
+        uses: docker/metadata-action@v3.5.0
         with:
           images: giammbo/cfn-lint
 
       - name: Extract metadata (tags, labels) for other version
         id: meta
-        uses: docker/metadata-action@3.5.0
+        uses: docker/metadata-action@v3.5.0
         with:
           images: giammbo/cfn-lint
           flavor: |
