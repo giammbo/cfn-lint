@@ -34,13 +34,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}-alpine
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Build and push Alpine
-        uses: akhilerm/tag-push-action@v1.0.0
-        with:
-          src: docker.io/giammbo/cfn-lint:${{ steps.meta.outputs.tags }}-alpine
-          dst: |
-            docker.io/giammbo/cfn-lint:latest
-
       - name: Build and push Bullseye
         uses: docker/build-push-action@v2.7.0
         with:
