@@ -1,10 +1,10 @@
-name: Upload DockerHub Image
-
+name: CD
+​
 on:
   push:
     tags:
       - '*'
-
+​
 jobs:
   build:
     name: build
