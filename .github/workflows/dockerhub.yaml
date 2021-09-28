@@ -41,6 +41,7 @@ jobs:
             giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}
             giammbo/cfn-lint:latest
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}
+            ghcr.io/giammbo/cfn-lint:latest
           build-args: CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Build and push Bullseye
