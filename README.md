@@ -2,8 +2,14 @@
 
 ## Tags:
 
-### 0.56.0, latest
-* [`0.56.0`,`0.56.0-alpine`,`latest`](https://hub.docker.com/layers/giammbo/cfn-lint/latest/images/sha256-44bd4b97707794a722c56f9f4010b9ee33e4a3233a61e3c08ac6c44e1a7ef227?context=repo)
+### 0.56.1, latest
+* [`0.56.1`,`0.56.1-alpine`,`latest`](https://hub.docker.com/layers/giammbo/cfn-lint/latest/images/sha256-71b1b1be836d4ef81fa245b48f8fc59398e28d2f36b280f2867954850edc4a4a?context=repo)
+* [`0.56.1-bullseye`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.1-bullseye/images/sha256-7bcc0fa1d4b2870448b8c99fea1771b1e6777a876b3953c0920c7806df9251e7?context=repo)
+* [`0.56.1-slim`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.1-slim/images/sha256-fae341ca97956deb63cec0a82b7e4a4a05b44a5cfcd79e9d111f41ff5ea72095?context=repo)
+* [`0.56.1-buster`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.1-buster/images/sha256-6656de11c485f130ac1f2ed99d897c36bd5e7b7fa9cfe39506cf8377695ee5d8?context=repo)
+
+### 0.56.0
+* [`0.56.0`,`0.56.0-alpine`](https://hub.docker.com/layers/giammbo/cfn-lint/latest/images/sha256-44bd4b97707794a722c56f9f4010b9ee33e4a3233a61e3c08ac6c44e1a7ef227?context=repo)
 * [`0.56.0-bullseye`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.0-bullseye/images/sha256-dd8346eba1cdc09746fe23e171e9d7f235e0e43f46269992f031ec40cff4c9df?context=repo)
 * [`0.56.0-slim`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.0-slim/images/sha256-f04dd4b73cd5f19d342de347abfc6d5571e9228aea69da3eb633affd33129a65?context=repo)
 * [`0.56.0-buster`](https://hub.docker.com/layers/giammbo/cfn-lint/0.56.0-buster/images/sha256-2b3e74cf50298a5e06ecde5517badc3537ae54b0e250bff6a644edffea547e84?context=repo)
