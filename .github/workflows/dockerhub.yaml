@@ -54,7 +54,7 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-bullseye
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3.8-bullseye
+            IMAGE_PREFIX=python:3.11.0a2-bullseye
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Build and push Slim
@@ -67,7 +67,7 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3.8-slim
+            IMAGE_PREFIX=python:3.11.0a2-slim
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Build and push Buster
@@ -80,5 +80,5 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3.8-buster
+            IMAGE_PREFIX=python:3-buster
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
