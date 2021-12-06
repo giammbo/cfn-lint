@@ -3,7 +3,7 @@ FROM ${IMAGE_PREFIX}
 
 ARG CFN_LINT_VERSION=''
 RUN set -eu \ 
-    ; pip install --no-cache-dir "cfn-lint==${CFN_LINT_VERSION}" pydot cfn-lint-serverless \
+    ; pip install --no-cache-dir "cfn-lint==${CFN_LINT_VERSION}" \
 ;
 
 ENTRYPOINT ["cfn-lint"]
