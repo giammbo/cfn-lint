@@ -2,8 +2,14 @@
 
 ## Tags:
 
-### 0.56.2, latest
-* `0.56.2`,`0.56.2-alpine`,`latest`
+### 0.56.3, latest
+* `0.56.3`,`0.56.3-alpine`,`latest`
+* `0.56.3-bullseye`
+* `0.56.3-slim`
+* `0.56.3-buster`
+
+### 0.56.2
+* `0.56.2`,`0.56.2-alpine`
 * `0.56.2-bullseye`
 * `0.56.2-slim`
 * `0.56.2-buster`
