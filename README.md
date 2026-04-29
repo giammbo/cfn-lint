@@ -1,58 +1,25 @@
-# Supported tags and respective Dockerfile links
+# cfn-lint Docker image
 
-## Tags:
+Validate AWS CloudFormation YAML/JSON templates against the AWS CloudFormation Resource Specification and additional checks. Includes checking valid values for resource properties and best practices.
 
-### 0.56.3, latest
-* `0.56.3`,`0.56.3-alpine`,`latest`
-* `0.56.3-bullseye`
-* `0.56.3-slim`
-* `0.56.3-buster`
+This image wraps [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) and is rebuilt automatically on every upstream stable release.
 
-### 0.56.2
-* `0.56.2`,`0.56.2-alpine`
-* `0.56.2-bullseye`
-* `0.56.2-slim`
-* `0.56.2-buster`
+## Available tags
 
-### 0.56.1
-* `0.56.1`,`0.56.1-alpine`
-* `0.56.1-bullseye`
-* `0.56.1-slim`
-* `0.56.1-buster`
+Tags are published continuously to:
 
-### 0.56.0
-* `0.56.0`,`0.56.0-alpine`
-* `0.56.0-bullseye`
-* `0.56.0-slim`
-* `0.56.0-buster`
+- Docker Hub: <https://hub.docker.com/r/giammbo/cfn-lint/tags>
+- GHCR: <https://github.com/giammbo/cfn-lint/pkgs/container/cfn-lint>
 
-### 0.55.0
-* `0.55.0`,`0.55.0-alpine`
-* `0.55.0-bullseye`
-* `0.55.0-slim`
-* `0.55.0-buster`
+For each upstream cfn-lint release `X.Y.Z` four variants are produced:
 
-### 0.54.4
-* `0.54.4`,`0.54.4-alpine`
-* `0.54.4-bullseye`
-* `0.54.4-slim`
-* `0.54.4-buster`
+- `X.Y.Z` (default, alpine-based) — also tagged `latest` for the most recent release
+- `X.Y.Z-bullseye`
+- `X.Y.Z-slim`
+- `X.Y.Z-buster`
 
-### 0.54.3
-* `0.54.3`,`0.54.3-alpine`
-* `0.54.3-bullseye`
-* `0.54.3-slim`
-* `0.54.3-buster`
+## Usage
 
-### 0.54.2
-* `0.54.2`,`0.54.2-alpine`
-* `0.54.2-bullseye`
-* `0.54.2-slim`
-* `0.54.2-buster`
-
-# What is cfn-lint?
-Validate AWS CloudFormation yaml/json templates against the AWS CloudFormation Resource Specification and additional checks. Includes checking valid values for resource properties and best practices.
-
-# How to use this image
-
-`docker run --rm -v $(pwd):/data giammbo/cfn-lint /data/template.yaml`
+```sh
+docker run --rm -v "$(pwd):/data" giammbo/cfn-lint /data/template.yaml
+```

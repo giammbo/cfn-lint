@@ -1,0 +1,59 @@
+---
+name: Check upstream cfn-lint release
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    name: Check and tag
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.RELEASE_PAT }}
+
+      - name: Resolve latest upstream stable release
+        id: upstream
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tag=$(gh api repos/aws-cloudformation/cfn-lint/releases/latest --jq .tag_name)
+          version="${tag#v}"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Unexpected upstream tag format: '$tag'"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Latest upstream stable: $version"
+
+      - name: Skip if tag already exists
+        id: check_tag
+        run: |
+          set -euo pipefail
+          version="${{ steps.upstream.outputs.version }}"
+          if git ls-remote --tags origin "refs/tags/$version" | grep -q .; then
+            echo "Tag $version already exists, nothing to do"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create and push tag
+        if: steps.check_tag.outputs.skip == 'false'
+        run: |
+          set -euo pipefail
+          version="${{ steps.upstream.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$version" -m "Auto: upstream cfn-lint $version"
+          git push origin "$version"
