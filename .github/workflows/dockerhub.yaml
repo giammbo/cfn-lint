@@ -53,7 +53,7 @@ jobs:
           build-args: CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Test Alpine
-        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }} /opt/tests/template.yaml
+        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }} --non-zero-exit-code error /opt/tests/template.yaml
 
       - name: Build Bullseye
         uses: docker/build-push-action@v2.7.0
@@ -71,7 +71,7 @@ jobs:
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Test Bullseye
-        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-bullseye /opt/tests/template.yaml
+        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-bullseye --non-zero-exit-code error /opt/tests/template.yaml
 
       - name: Build Slim
         uses: docker/build-push-action@v2.7.0
@@ -89,7 +89,7 @@ jobs:
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Test Slim
-        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim /opt/tests/template.yaml
+        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim --non-zero-exit-code error /opt/tests/template.yaml
 
       # PUSH SECTION
 
