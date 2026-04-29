@@ -65,7 +65,7 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-bullseye
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3-bullseye
+            IMAGE_PREFIX=python:3.13-bullseye
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Test Bullseye
@@ -82,28 +82,11 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3-slim
+            IMAGE_PREFIX=python:3.13-slim
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Test Slim
         run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim /opt/tests/template.yaml
-
-      - name: Build Buster
-        uses: docker/build-push-action@v2.7.0
-        with:
-          context: .
-          push: false
-          platforms: linux/amd64,linux/arm64
-          tags: |
-            giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster
-            ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            IMAGE_PREFIX=python:3-buster
-            CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
-
-      - name: Test Buster
-        run: docker run --rm -v "$(pwd):/opt" giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster /opt/tests/template.yaml
 
       # PUSH SECTION
 
@@ -132,7 +115,7 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-bullseye
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3-bullseye
+            IMAGE_PREFIX=python:3.13-bullseye
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
 
       - name: Push Slim
@@ -146,19 +129,5 @@ jobs:
             ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-slim
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            IMAGE_PREFIX=python:3-slim
-            CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}
-
-      - name: Push Buster
-        uses: docker/build-push-action@v2.7.0
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: |
-            giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster
-            ghcr.io/giammbo/cfn-lint:${{ steps.get_version.outputs.VERSION }}-buster
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            IMAGE_PREFIX=python:3-buster
+            IMAGE_PREFIX=python:3.13-slim
             CFN_LINT_VERSION=${{ steps.get_version.outputs.VERSION }}

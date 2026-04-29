@@ -11,12 +11,11 @@ Tags are published continuously to:
 - Docker Hub: <https://hub.docker.com/r/giammbo/cfn-lint/tags>
 - GHCR: <https://github.com/giammbo/cfn-lint/pkgs/container/cfn-lint>
 
-For each upstream cfn-lint release `X.Y.Z` four variants are produced:
+For each upstream cfn-lint release `X.Y.Z` three variants are produced:
 
 - `X.Y.Z` (default, alpine-based) — also tagged `latest` for the most recent release
 - `X.Y.Z-bullseye`
 - `X.Y.Z-slim`
-- `X.Y.Z-buster`
 
 ## Usage
 

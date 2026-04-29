@@ -1,4 +1,4 @@
-ARG IMAGE_PREFIX='python:3-alpine'
+ARG IMAGE_PREFIX='python:3.13-alpine'
 FROM ${IMAGE_PREFIX}
 
 ARG CFN_LINT_VERSION=''
